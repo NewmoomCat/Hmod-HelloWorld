@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="HelloWorld" default="dist" basedir=".">
+    <path id="ant.project.libs">
+        <fileset dir="libs">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+
+    <property name="ant.project.src" location="src" />
+    <property name="ant.project.target" location="target" />
+
+    <target name="init" description="项目init">
+        <mkdir dir="${ant.project.target}" />
+    </target>
+
+    <target name="compile" depends="init" description="编译字节码">
+        <mkdir dir="${ant.project.target}/classes" />
+        <javac srcdir="${ant.project.src}" destdir="${ant.project.target}/classes" includeantruntime="false"
+               source="8" target="8" encoding="UTF-8" classpathref="ant.project.libs">
+                <compilerarg value="-Xlint:-options" />
+        </javac>
+    </target>
+
+    <target name="build" depends="compile">
+        <mkdir dir="${ant.project.target}/libs" />
+        <jar jarfile="${ant.project.target}/libs/${ant.project.name}.jar">
+            <fileset dir="${ant.project.target}/classes" />
+        </jar>
+    </target>
+
+    <target name="clean">
+        <delete dir="${ant.project.target}"/>
+    </target>
+</project>
