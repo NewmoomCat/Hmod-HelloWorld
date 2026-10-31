@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project name="HelloWorld" default="dist" basedir=".">
+<project name="HelloWorld" default="build" basedir=".">
     <path id="ant.project.libs">
         <fileset dir="libs">
             <include name="**/*.jar" />
@@ -21,14 +21,14 @@
         </javac>
     </target>
 
-    <target name="build" depends="compile">
+    <target name="build" depends="compile" description="构建jar">
         <mkdir dir="${ant.project.target}/libs" />
         <jar jarfile="${ant.project.target}/libs/${ant.project.name}.jar">
             <fileset dir="${ant.project.target}/classes" />
         </jar>
     </target>
 
-    <target name="clean">
+    <target name="clean" description="清理构建缓存">
         <delete dir="${ant.project.target}"/>
     </target>
 </project>
