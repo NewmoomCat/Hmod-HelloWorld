@@ -12,4 +12,13 @@ public class HelloWorldListener extends PluginListener{
         }
         return false;
     }
+
+    @Override
+    public void onDisconnect(Player player) {
+        String message = (Colors.Blue + "Player " + player.getName() + " has left the game");
+
+        for (Player playerAll : etc.getServer().getPlayerList()) {
+            playerAll.sendMessage(message);
+        }
+    }
 }

@@ -15,9 +15,10 @@ public class HelloWorld extends Plugin {
     @Override
     public void initialize() {
         HelloWorldListener listener = new HelloWorldListener();
-        PluginLoader loader = etc.getLoader();
+        PluginLoader loader = hIndex.getLoader();
 
         loader.addListener(PluginLoader.Hook.COMMAND, listener, this, PluginListener.Priority.MEDIUM);
         loader.addListener(PluginLoader.Hook.LOGIN, listener, this, PluginListener.Priority.MEDIUM);
+        loader.addListener(PluginLoader.Hook.DISCONNECT, listener, this, PluginListener.Priority.MEDIUM);
     }
 }
