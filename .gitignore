@@ -2,4 +2,9 @@
 .vscode/*
 *.iml
 
+# ant and maven
 target/
+
+# gradle
+.gradle/
+build/
